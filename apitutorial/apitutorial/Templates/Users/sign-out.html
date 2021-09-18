@@ -1,0 +1,53 @@
+{% extend 'base.html' %}
+{% laod static %}
+
+{% block extend_head %}
+
+<script src="https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<h3>API Route and weather Project-Sign Out</h3>
+
+<div class="container">
+    <form id="signupform" method="POST" action="/signup">
+        {% csrf_token %}
+
+        <label for="first_name">First Name</label>
+        {{form.first_name}}
+        <label for="last_name">Last Name</label>
+        {{form.last_name}}
+        <label for="username">Username</label>
+        {{form.username}}
+        <label for="password1">password1</label>
+        {{form.password1}}
+        <label for="Password2">Confirm Password</label>
+        {{form.Password2}}
+
+        {{form.token}}
+
+
+        <label class="check-container">Show Passwords
+            <input type="checkbox" onclick="showPword()">
+            <span class="checkmark"></span>
+           </label>
+       
+           <button type="submit">Sign Out</button>
+       
+    </form>
+</div>
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+<script type="text/javascript">
+  // Create a variable that can be used in main.js
+  var recaptcha_site_key = '{{recaptcha_site_key|safe}}'
+</script>
+
+
+{% endblock %}
